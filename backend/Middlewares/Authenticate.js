@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import AdminModel from '../Models/Admin.js';
+import AdminModel from '../Models/AdminModel.js';
 
 export const authMiddleware = async (req, res, next) => {
     let token;
@@ -13,9 +13,9 @@ export const authMiddleware = async (req, res, next) => {
             next();
            }
         }catch(err){
-            throw new Error("Authorized token expired. Please login again.");
+            res.status(500).json({error: "Authorized token expired. Please login again."})
         }
     }else{
-        throw new Error("There is no token attached to header");
+        res.status(500).json({error: "There is no token attached to header"})
     }
 };
