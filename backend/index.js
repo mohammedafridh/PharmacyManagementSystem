@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import Stockrouter from "./Routes/StockRoutes.js";
 import morgan from "morgan";
 import SupplierRouter from "./Routes/SupplierRoutes.js";
-
+import Admin from './Routes/AdminRoute.js'
 
 const app = express()
 app.use(express.json())
@@ -20,3 +20,6 @@ mongoose.connect(process.env.DB, {
 
 app.use('/stock', Stockrouter);
 app.use('/supplier', SupplierRouter);
+
+
+app.use('/admin',Admin)
