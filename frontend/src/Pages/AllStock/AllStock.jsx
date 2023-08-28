@@ -7,64 +7,64 @@ const AllStock = () => {
 
   const columnData = [
     {
-      label: "Tour Id",
+      label: "Purchase ID",
       field: "id",
       sort: "asc",
       width: 250,
     },
     {
-      label: "Guide Email",
+      label: "SKU number",
       field: "email",
       sort: "asc",
-      width: 200,
+      width: 150,
     },
     {
-      label: "Tourist Email",
+      label: "Item Name",
       field: "touristEmail",
       sort: "asc",
       width: 200,
     },
     {
-      label: "Contact Number",
+      label: "No. of boxes",
       field: "contact",
       sort: "asc",
-      width: 150,
+      width: 130,
     },
     {
-      label: "Tour Destination",
+      label: "No. of Units",
       field: "tourDestination",
       sort: "asc",
-      width: 150,
+      width: 130,
     },
     {
-      label: "Pick-up Destination",
+      label: "Manufacture",
       field: "pickupDestination",
       sort: "asc",
-      width: 200,
+      width: 100,
     },
     {
-      label: "From",
+      label: "Expiry",
       field: "from",
       sort: "asc",
-      width: 150,
+      width: 100,
     },
     {
-      label: "To",
+      label: "Supplier ID",
       field: "to",
       sort: "asc",
-      width: 150,
+      width: 130,
     },
     {
-      label: "Tour Time.",
+      label: "Batch Number",
       field: "time",
       sort: "asc",
       width: 150,
     },
     {
-      label: "Status",
+      label: "Purchase Date",
       field: "status",
       sort: "asc",
-      width: 200,
+      width: 150,
     },
     {
       label: "Actions",
@@ -83,7 +83,7 @@ const AllStock = () => {
 
   return (
     <div className="allBookings">
-      <h3>All Bookings</h3>
+      <h3>All Stocks</h3>
       <MDBDataTable scrollX striped bordered data={tableData} maxHeight="200px"/>
     </div>
   );
