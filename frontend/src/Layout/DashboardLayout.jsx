@@ -2,6 +2,8 @@ import React from 'react';
 import { AppstoreOutlined, SnippetsOutlined, WarningOutlined, CheckSquareOutlined, BarChartOutlined, UserOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Outlet, Link } from 'react-router-dom';
+import { Footer } from 'antd/es/layout/layout';
+
 
 const { Header, Content, Sider } = Layout;
 
@@ -171,7 +173,7 @@ const DashboardLayout = () => {
             style={{
               padding: 24,
               margin: 0,
-              minHeight: 280,
+              minHeight: '70vh',
               background: colorBgContainer,
             }}
           >
@@ -180,6 +182,13 @@ const DashboardLayout = () => {
             <Outlet />
 
           </Content>
+          <Footer
+            style={{
+              textAlign: 'center',
+            }}
+          >
+        Envicta ©2023
+      </Footer>
         </Layout>
       </Layout>
     </Layout>
