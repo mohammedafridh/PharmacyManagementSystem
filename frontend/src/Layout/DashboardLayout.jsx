@@ -1,8 +1,11 @@
-import React from 'react';
-import { AppstoreOutlined, SnippetsOutlined, WarningOutlined, CheckSquareOutlined, BarChartOutlined, UserOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import React, { useState } from 'react';
+import {MenuFoldOutlined,
+  MenuUnfoldOutlined, AppstoreOutlined, SnippetsOutlined, WarningOutlined, CheckSquareOutlined, BarChartOutlined, UserOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { Breadcrumb, Layout, Menu, theme,Button } from 'antd';
 import { Outlet, Link } from 'react-router-dom';
 import { Footer } from 'antd/es/layout/layout';
+import logo from '../images/logo.svg'
+
 
 
 const { Header, Content, Sider } = Layout;
@@ -115,31 +118,20 @@ const renderMenuItems = (menuItems) => {
 
 
 const DashboardLayout = () => {
+  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   return (
     <Layout>
-      {/* Top Header */}
-      <Header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <div className="demo-logo" />
-        {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
-      </Header>
       <Layout>
 
         {/* Sidebar */}
-        <Sider
-          width={200}
-          style={{
-            background: colorBgContainer,
-          }}
-        >
+        <Sider trigger={null} collapsible collapsed={collapsed}>
+
+          <div className="demo-logo-vertical" style={{height:'65px',backgroundColor: 'white'}}> <img src={logo} alt="logo" style={{width:'100%', height:'100%'}}/> </div>
+
           <Menu
             mode="inline"
             defaultSelectedKeys={['sub1']}
@@ -148,21 +140,38 @@ const DashboardLayout = () => {
               height: '100%',
               borderRight: 0,
             }}
+            theme='dark'
           >
             {renderMenuItems(items)}
           </Menu>
         </Sider>
-        <Layout
-          style={{
-            padding: '0 24px 24px',
-          }}
-        >
+        <Layout>
+          {/* Top Header */}
+      <Header
+        style={{
+          padding: '0',
+          background: colorBgContainer
+        }}
+      >
+        <Button
+            type="text"
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            onClick={() => setCollapsed(!collapsed)}
+            style={{
+              fontSize: '16px',
+              width: 64,
+              height: 64,
+            }}
+          />
+        {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
+      </Header>
 
           <Breadcrumb
             style={{
-              margin: '16px 0',
+              margin: '16px',
             }}
           >
+            
             <Breadcrumb.Item>Home</Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
@@ -172,7 +181,7 @@ const DashboardLayout = () => {
           <Content
             style={{
               padding: 24,
-              margin: 0,
+              margin: '24px 16px',
               minHeight: '70vh',
               background: colorBgContainer,
             }}
