@@ -22,6 +22,7 @@ const items = [
     key: 'sub3',
     icon: React.createElement(BarChartOutlined),
     label: 'Sales',
+    to:'sales'
   },
   {
     key: 'sub4',
@@ -36,6 +37,7 @@ const items = [
       {
         key: 2,
         label: 'Sales',
+        to:'retsales'
       },
     ],
   },
@@ -47,10 +49,12 @@ const items = [
       {
         key: 3,
         label: 'Purchase',
+        to:'purchase'
       },
       {
         key: 4,
         label: 'Sales',
+        to:'dmgretsales'
       },
     ],
   },
@@ -62,22 +66,27 @@ const items = [
       {
         key: 5,
         label: 'Invoice',
+        to: 'invoice'
       },
       {
         key: 6,
         label: 'Goods Received Notes',
+        to: 'rcdnotes'
       },
       {
         key: 7,
         label: 'Goods Delivery Notes',
+        to:'dnotes'
       },
       {
         key: 8,
         label: 'Purchase Order',
+        to:'order'
       },
       {
         key: 9,
         label: 'Packing Slip',
+        to: 'packingslip'
       },
     ],
   },
