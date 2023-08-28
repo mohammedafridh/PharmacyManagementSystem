@@ -3,3 +3,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+.ant-menu-item:hover, .ant-menu-submenu:hover{
+  background-color: rgb(91, 91, 91) !important;
+  color: white;
+}
