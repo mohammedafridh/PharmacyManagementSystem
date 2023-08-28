@@ -20,6 +20,4 @@ mongoose.connect(process.env.DB, {
 
 app.use('/stock', Stockrouter);
 app.use('/supplier', SupplierRouter);
-
-
 app.use('/admin',Admin)
