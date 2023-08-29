@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { MDBDataTable } from "mdbreact";
+import {Button } from 'antd';
 
 const AllStock = () => {
 
@@ -13,6 +14,12 @@ const AllStock = () => {
       width: 250,
     },
     {
+      label: "Packing Slip ID",
+      field: "id",
+      sort: "asc",
+      width: 250,
+    },
+    {
       label: "SKU number",
       field: "email",
       sort: "asc",
@@ -20,6 +27,18 @@ const AllStock = () => {
     },
     {
       label: "Item Name",
+      field: "touristEmail",
+      sort: "asc",
+      width: 200,
+    },
+    {
+      label: "Category",
+      field: "touristEmail",
+      sort: "asc",
+      width: 200,
+    },
+    {
+      label: "Location",
       field: "touristEmail",
       sort: "asc",
       width: 200,
