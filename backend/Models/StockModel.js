@@ -8,6 +8,8 @@ const stockSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    location:String,
+    category:String,
     noOfUnits:{
         type:Number,
         required: true

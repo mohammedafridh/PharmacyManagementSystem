@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import {MenuFoldOutlined,
-  MenuUnfoldOutlined, AppstoreOutlined, SnippetsOutlined, WarningOutlined, CheckSquareOutlined, BarChartOutlined, UserOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme,Button } from 'antd';
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined, AppstoreOutlined, SnippetsOutlined, WarningOutlined, CheckSquareOutlined, BarChartOutlined, UserOutlined, ExclamationCircleOutlined
+} from '@ant-design/icons';
+import { Breadcrumb, Layout, Menu, theme, Button } from 'antd';
 import { Outlet, Link } from 'react-router-dom';
 import { Footer } from 'antd/es/layout/layout';
 import logo from '../images/logo.svg'
@@ -20,14 +22,25 @@ const items = [
   {
     key: 'sub2',
     icon: React.createElement(CheckSquareOutlined),
-    label: 'Purchase',
-    to: 'purchase'
+    label: 'Received ',
+    children: [
+      {
+        key: 11,
+        label: 'Add Received Items',
+        to: 'addStock'
+      },
+      {
+        key: 12,
+        label: 'Create Purchase Order',
+        to: 'purchaseOrder'
+      },
+    ]
   },
   {
     key: 'sub3',
     icon: React.createElement(BarChartOutlined),
-    label: 'Sales',
-    to:'sales'
+    label: 'Dispatch Goods',
+    to: 'sales'
   },
   {
     key: 'sub4',
@@ -37,12 +50,12 @@ const items = [
       {
         key: 1,
         label: 'Purchase',
-        to:'purchaseReturn'
+        to: 'purchaseReturn'
       },
       {
         key: 2,
         label: 'Sales',
-        to:'retsales'
+        to: 'retsales'
       },
     ],
   },
@@ -54,12 +67,12 @@ const items = [
       {
         key: 3,
         label: 'Purchase',
-        to:'purchase'
+        to: 'purchase'
       },
       {
         key: 4,
         label: 'Sales',
-        to:'dmgretsales'
+        to: 'dmgretsales'
       },
     ],
   },
@@ -81,12 +94,12 @@ const items = [
       {
         key: 7,
         label: 'Goods Delivery Notes',
-        to:'dnotes'
+        to: 'dnotes'
       },
       {
         key: 8,
         label: 'Purchase Order',
-        to:'order'
+        to: 'order'
       },
       {
         key: 9,
@@ -130,7 +143,7 @@ const DashboardLayout = () => {
         {/* Sidebar */}
         <Sider trigger={null} collapsible collapsed={collapsed}>
 
-          <div className="demo-logo-vertical" style={{height:'65px',backgroundColor: 'white'}}> <img src={logo} alt="logo" style={{width:'100%', height:'100%'}}/> </div>
+          <div className="demo-logo-vertical" style={{ height: '65px', backgroundColor: 'white' }}> <img src={logo} alt="logo" style={{ width: '100%', height: '100%' }} /> </div>
 
           <Menu
             mode="inline"
@@ -147,31 +160,31 @@ const DashboardLayout = () => {
         </Sider>
         <Layout>
           {/* Top Header */}
-      <Header
-        style={{
-          padding: '0',
-          background: colorBgContainer
-        }}
-      >
-        <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
+          <Header
             style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
+              padding: '0',
+              background: colorBgContainer
             }}
-          />
-        {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
-      </Header>
+          >
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: '16px',
+                width: 64,
+                height: 64,
+              }}
+            />
+            {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
+          </Header>
 
           <Breadcrumb
             style={{
               margin: '16px',
             }}
           >
-            
+
             <Breadcrumb.Item>Home</Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
@@ -181,7 +194,7 @@ const DashboardLayout = () => {
           <Content
             style={{
               padding: 24,
-              margin: '24px 16px',
+              margin: '0px 16px',
               minHeight: '70vh',
               background: colorBgContainer,
             }}
@@ -196,8 +209,8 @@ const DashboardLayout = () => {
               textAlign: 'center',
             }}
           >
-        Envicta ©2023
-      </Footer>
+            Envicta ©2023
+          </Footer>
         </Layout>
       </Layout>
     </Layout>
