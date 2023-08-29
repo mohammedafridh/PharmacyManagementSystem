@@ -138,80 +138,76 @@ const DashboardLayout = () => {
 
   return (
     <Layout>
+      {/* Sidebar */}
+      <Sider trigger={null} collapsible collapsed={collapsed}>
+
+        <div className="demo-logo-vertical" style={{ height: '65px', backgroundColor: 'white' }}> <img src={logo} alt="logo" style={{ width: '100%', height: '100%' }} /> </div>
+
+        <Menu
+          mode="inline"
+          defaultSelectedKeys={['sub1']}
+          defaultOpenKeys={['sub1']}
+          style={{
+            height: '100%',
+            borderRight: 0,
+          }}
+          theme='dark'
+        >
+          {renderMenuItems(items)}
+        </Menu>
+      </Sider>
       <Layout>
-
-        {/* Sidebar */}
-        <Sider trigger={null} collapsible collapsed={collapsed}>
-
-          <div className="demo-logo-vertical" style={{ height: '65px', backgroundColor: 'white' }}> <img src={logo} alt="logo" style={{ width: '100%', height: '100%' }} /> </div>
-
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={['sub1']}
-            defaultOpenKeys={['sub1']}
+        {/* Top Header */}
+        <Header
+          style={{
+            padding: '0',
+            background: colorBgContainer
+          }}
+        >
+          <Button
+            type="text"
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            onClick={() => setCollapsed(!collapsed)}
             style={{
+              width: 64,
               height: '100%',
-              borderRight: 0,
             }}
-            theme='dark'
-          >
-            {renderMenuItems(items)}
-          </Menu>
-        </Sider>
-        <Layout>
-          {/* Top Header */}
-          <Header
-            style={{
-              padding: '0',
-              background: colorBgContainer
-            }}
-          >
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: '16px',
-                width: 64,
-                height: 64,
-              }}
-            />
-            {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
-          </Header>
+          />
+          {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
+        </Header>
 
-          <Breadcrumb
-            style={{
-              margin: '16px',
-            }}
-          >
+        <Breadcrumb
+          style={{
+            margin: '16px',
+          }}
+        >
 
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>List</Breadcrumb.Item>
+          <Breadcrumb.Item>App</Breadcrumb.Item>
+          <Breadcrumb.Item>App</Breadcrumb.Item>
+        </Breadcrumb>
 
-          <Content
-            style={{
-              padding: 24,
-              margin: '0px 16px',
-              minHeight: '70vh',
-              background: colorBgContainer,
-            }}
-          >
+        <Content
+          style={{
+            padding: 24,
+            margin: '0px 16px',
+            minHeight: '64.8vh',
+            background: colorBgContainer,
+          }}
+        >
 
-            {/* Pages Section */}
-            <Outlet />
+          {/* Pages Section */}
+          <Outlet />
 
-          </Content>
-          <Footer
-            style={{
-              textAlign: 'center',
-            }}
-          >
-            Envicta ©2023
-          </Footer>
-        </Layout>
+        </Content>
+        <Footer
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          Envicta ©2023
+        </Footer>
       </Layout>
     </Layout>
   );

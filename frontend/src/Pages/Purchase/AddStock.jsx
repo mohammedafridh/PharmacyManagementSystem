@@ -1,5 +1,8 @@
 import { PlusOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
+import StockTable from '../../components/StockTable';
+import CreateSKUModel from '../../components/CreateSKUModel';
+
 import {
   Button,
   Cascader,
@@ -14,10 +17,13 @@ import {
   Switch,
   TreeSelect,
   Upload,
-  Typography
+  Typography,
+  Row,
+  Col
 } from 'antd';
-const { RangePicker } = DatePicker;
-const { TextArea } = Input;
+
+
+
 const { Title } = Typography;
 
 const normFile = (e) => {
@@ -34,140 +40,134 @@ const AddStock = () => {
 
   return (
     <>
-      <Title level={3}>Add Stock</Title>
-      <Checkbox
-        checked={componentDisabled}
-        onChange={(e) => setComponentDisabled(e.target.checked)}
-      >
-        Form disabled
-      </Checkbox>
-      <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
-        disabled={componentDisabled}
-        style={{
-          maxWidth: 600,
-        }}
-      >
-        {/* <Form.Item label="Checkbox" name="disabled" valuePropName="checked">
-          <Checkbox>Checkbox</Checkbox>
-        </Form.Item> */}
-        {/* <Form.Item label="Radio">
-          <Radio.Group>
-            <Radio value="apple"> Apple </Radio>
-            <Radio value="pear"> Pear </Radio>
-          </Radio.Group>
-        </Form.Item> */}
+      <div style={{ width: '90%', margin: '0px auto' }}>
+        <Title level={3}>Add Stock</Title>
         <Form.Item>
-          <Input placeholder='Packing Slip Id'/>
+          <Select
+            showSearch
+            placeholder="Supplier ID"
+            optionFilterProp="children"
+            filterOption={(input, option) => (option?.label ?? '').includes(input)}
+            filterSort={(optionA, optionB) =>
+              (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+            }
+            options={[
+              {
+                value: '1',
+                label: 'Not Identified',
+              },
+              {
+                value: '2',
+                label: 'Closed',
+              },
+              {
+                value: '3',
+                label: 'Communicated',
+              },
+              {
+                value: '4',
+                label: 'Identified',
+              },
+              {
+                value: '5',
+                label: 'Resolved',
+              },
+              {
+                value: '6',
+                label: 'Cancelled',
+              },
+            ]}
+          />
         </Form.Item>
-        {/* <Form.Item label="Select">
-          <Select>
-            <Select.Option value="demo">Demo</Select.Option>
-          </Select>
-        </Form.Item> */}
-        <Form.Item>
-        <Select
-          showSearch
-          placeholder="SKU Number"
-          optionFilterProp="children"
-          filterOption={(input, option) => (option?.label ?? '').includes(input)}
-          filterSort={(optionA, optionB) =>
-            (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-          }
-          options={[
-            {
-              value: '1',
-              label: 'Not Identified',
-            },
-            {
-              value: '2',
-              label: 'Closed',
-            },
-            {
-              value: '3',
-              label: 'Communicated',
-            },
-            {
-              value: '4',
-              label: 'Identified',
-            },
-            {
-              value: '5',
-              label: 'Resolved',
-            },
-            {
-              value: '6',
-              label: 'Cancelled',
-            },
-          ]}
-        />
-        </Form.Item>
-        <Form.Item>
-          <InputNumber placeholder='Number Of Boxes' style={{width:'100%'}}/>
-        </Form.Item>
-        <Form.Item >
-          <InputNumber placeholder='Number Of Units' style={{width:'100%'}}/>
-        </Form.Item>
-        <Form.Item>
-          <InputNumber placeholder='Batch Number' style={{width:'100%'}}/>
-        </Form.Item>
-        <Form.Item>
-          <DatePicker style={{width:'100%'}} placeholder='Manufactured Date'/>
-        </Form.Item>
-        <Form.Item>
-          <DatePicker placeholder='Expiry Date' style={{width:'100%'}}/>
-        </Form.Item>
-        <Form.Item>
-        <Select
-          showSearch
-          placeholder="Supplier ID"
-          optionFilterProp="children"
-          filterOption={(input, option) => (option?.label ?? '').includes(input)}
-          filterSort={(optionA, optionB) =>
-            (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-          }
-          options={[
-            {
-              value: '1',
-              label: 'Not Identified',
-            },
-            {
-              value: '2',
-              label: 'Closed',
-            },
-            {
-              value: '3',
-              label: 'Communicated',
-            },
-            {
-              value: '4',
-              label: 'Identified',
-            },
-            {
-              value: '5',
-              label: 'Resolved',
-            },
-            {
-              value: '6',
-              label: 'Cancelled',
-            },
-          ]}
-        />
-        </Form.Item>
-        {/* <Form.Item label="TextArea">
-          <TextArea rows={4} />
-        </Form.Item> */}
-        {/* <Form.Item label="Switch" valuePropName="checked">
-          <Switch />
-        </Form.Item> */}
+
+        <Row className='justify-content-between'>
+          <Col span={12}>
+            <Form.Item>
+              <Input placeholder='Packing Slip Id' />
+            </Form.Item>
+          </Col>
+          <Col span={11}>
+            <Form.Item>
+              <Select
+                showSearch
+                placeholder="SKU Number"
+                optionFilterProp="children"
+                filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                filterSort={(optionA, optionB) =>
+                  (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                }
+                options={[
+                  {
+                    value: '1',
+                    label: 'Not Identified',
+                  },
+                  {
+                    value: '2',
+                    label: 'Closed',
+                  },
+                  {
+                    value: '3',
+                    label: 'Communicated',
+                  },
+                  {
+                    value: '4',
+                    label: 'Identified',
+                  },
+                  {
+                    value: '5',
+                    label: 'Resolved',
+                  },
+                  {
+                    value: '6',
+                    label: 'Cancelled',
+                  },
+                ]}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row className='justify-content-between'>
+          <Col span={12}>
+            <Form.Item>
+              <InputNumber placeholder='Number Of Boxes' style={{ width: '100%' }} />
+            </Form.Item>
+          </Col>
+          <Col span={11}>
+            <Form.Item >
+              <InputNumber placeholder='Number Of Units' style={{ width: '100%' }} />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row className='justify-content-between'>
+          <Col span={12}>
+            <Form.Item>
+              <DatePicker style={{ width: '100%' }} placeholder='Manufactured Date' />
+            </Form.Item>
+          </Col>
+          <Col span={11}>
+            <Form.Item>
+              <DatePicker placeholder='Expiry Date' style={{ width: '100%' }} />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row className='justify-content-between'>
+          <Col span={12}>
+            <Form.Item>
+              <InputNumber placeholder='Batch Number' style={{ width: '100%' }} />
+            </Form.Item>
+          </Col>
+          <Col span={11}>
+            <Form.Item>
+              <DatePicker placeholder='Purchase Date' style={{ width: '100%' }} />
+            </Form.Item>
+          </Col>
+        </Row>
+
         <Form.Item valuePropName="fileList" getValueFromEvent={normFile}>
-          <Upload action="/upload.do" listType="picture-card" >
+          <Upload action="/upload.do" listType="picture-card">
             <div>
               <PlusOutlined />
               <div
@@ -180,13 +180,14 @@ const AddStock = () => {
             </div>
           </Upload>
         </Form.Item>
-        <Form.Item label="Button">
-          <Button>Button</Button>
-        </Form.Item>
-        <Form.Item label="Slider">
-          <Slider />
-        </Form.Item>
-      </Form>
+        <div className="d-flex w-100 justify-content-between">
+          <Button type="primary" htmlType="submit" className='mb-0'>Add To The Stock </Button>
+          <CreateSKUModel/>
+        </div>
+      </div>
+      <hr className='bg-dark' />
+      <StockTable />
+      
     </>
   );
 };
