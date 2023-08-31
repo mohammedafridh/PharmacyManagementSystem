@@ -79,11 +79,11 @@ const Sales = () => {
   const confirm = (e) => {
     console.log(e);
     resetOrderList();
-    message.success('Click on Yes');
+    message.success('Dispatch Reset Success');
   };
   const cancel = (e) => {
     console.log(e);
-    message.error('Click on No');
+    // message.error('Click on No');
   };
 
   const handleSubmit = ()=>{
@@ -166,12 +166,13 @@ const Sales = () => {
         <div className="table-container" style={
           {
             maxHeight:'40vh',
-            overflow:'scroll'
+            overflow:'scroll',
+            scroll:'hidden'
           }
         }>
           <Table columns={columns} dataSource={data.map((item, index) => ({ ...item, key: index }))} />
         </div>
-        <Button type='primary' style={{background:'green', marginRight:'5%'}} className='position-absolute' onClick={handleSubmit}>Submit</Button>
+        <Button type='primary' style={{background:'green', right:'5%'}} className='position-absolute mt-4' onClick={handleSubmit}>Submit</Button>
       </div>
     </>
   )

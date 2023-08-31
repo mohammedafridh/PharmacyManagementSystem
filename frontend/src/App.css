@@ -13,3 +13,34 @@
 .justify-content-between{
   justify-content: space-between;
 }
+
+::-webkit-scrollbar {
+  width: 6px; /* Width of vertical scrollbar */
+  height: 6px; /* Height of horizontal scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5); /* Opacity 0.5 */
+  border-radius: 3px; /* Rounded edges */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.7); /* Opacity 0.7 on hover */
+}
+
+/* Button */
+::-webkit-scrollbar-button {
+  display: none; /* Hide scrollbar buttons */
+}
+
+
+
+
+
