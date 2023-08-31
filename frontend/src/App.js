@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import DashboardLayout from './Layout/DashboardLayout'
 import './App.css'
@@ -15,11 +15,31 @@ import RetSales from './Pages/ExpiryReturns/RetSales'
 import Sales from './Pages/Sales/Sales'
 import AddStock from './Pages/Purchase/AddStock'
 import CreatePurchaseOrder from './Pages/Purchase/CreatePurchaseOrder'
+import Login from './Pages/Login/Login'
+import PreLoader from './components/Preloader'
+import NotFound from './Pages/ErrorPages/NotFound'
+
 
 const App = () => {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate an async operation (e.g., fetching data) with a delay
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500); // Simulating 2 seconds delay
+  }, []);
+
+  if (isLoading) {
+    return <PreLoader />; // Render the preloader while loading
+  }
+
   return (
     <Routes>
-      <Route path='/' element={<DashboardLayout />}>
+      <Route path='*' element={<NotFound />} />
+      <Route path='login' element={<Login />} />
+      <Route path='/' element={<DashboardLayout/>}>
         <Route path='allStock' index element={<AllStock />} />
         <Route path='addStock' element={<AddStock />} />
         <Route path='purchaseOrder' element={<CreatePurchaseOrder />} />
