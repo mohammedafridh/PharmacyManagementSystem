@@ -8,7 +8,7 @@ import { Outlet, Link } from 'react-router-dom';
 import { Footer } from 'antd/es/layout/layout';
 import logo from '../images/logo.svg';
 import { ConfigProvider, theme, Card } from "antd";
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { BulbOutlined, StarOutlined } from '@ant-design/icons';
 import { Switch, Space } from 'antd';
 
 
@@ -187,9 +187,9 @@ const DashboardLayout = () => {
             {/*THEME SWITCH BUTTON*/}
             {/* <Space direction="vertical" style={{position:'absolute', right:'3%'}}>
               <Switch onClick={handleTheme}
-                checkedChildren={<CheckOutlined />}
-                unCheckedChildren={<CloseOutlined />}
-                defaultChecked
+                checkedChildren={<BulbOutlined />}
+                unCheckedChildren={<StarOutlined />}
+                
               />
             </Space> */}
             {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
