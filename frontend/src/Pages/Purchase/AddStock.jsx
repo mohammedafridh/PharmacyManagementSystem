@@ -5,17 +5,11 @@ import CreateSKUModel from '../../components/CreateSKUModel';
 
 import {
   Button,
-  Cascader,
-  Checkbox,
   DatePicker,
   Form,
   Input,
   InputNumber,
-  Radio,
   Select,
-  Slider,
-  Switch,
-  TreeSelect,
   Upload,
   Typography,
   Row,
@@ -36,12 +30,10 @@ const normFile = (e) => {
 
 const AddStock = () => {
 
-  const [componentDisabled, setComponentDisabled] = useState(false);
-
   return (
     <>
       <div style={{ width: '90%', margin: '0px auto' }}>
-        <Title level={3}>Add Stock</Title>
+        <Title level={3} className='text-center'>Add Stock</Title>
         <Form.Item>
           <Select
             showSearch
@@ -191,4 +183,5 @@ const AddStock = () => {
     </>
   );
 };
-export default () => <AddStock />
+const AddStockPage= () => <AddStock />
+export default  AddStockPage;

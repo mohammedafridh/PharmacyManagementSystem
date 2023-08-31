@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined, AppstoreOutlined, SnippetsOutlined, WarningOutlined, CheckSquareOutlined, BarChartOutlined, UserOutlined, ExclamationCircleOutlined
@@ -199,7 +199,6 @@ const DashboardLayout = () => {
 
           {/* Pages Section */}
           <Outlet />
-
         </Content>
         <Footer
           style={{
