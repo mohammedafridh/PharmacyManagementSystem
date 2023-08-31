@@ -185,13 +185,13 @@ const DashboardLayout = () => {
               }}
             />
             {/*THEME SWITCH BUTTON*/}
-            {/* <Space direction="vertical" style={{position:'absolute', right:'3%'}}>
+            <Space direction="vertical" style={{position:'absolute', right:'3%'}}>
               <Switch onClick={handleTheme}
                 checkedChildren={<BulbOutlined />}
                 unCheckedChildren={<StarOutlined />}
                 
               />
-            </Space> */}
+            </Space>
             {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
           </Header>
 
