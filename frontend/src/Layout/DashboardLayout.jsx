@@ -3,10 +3,13 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined, AppstoreOutlined, SnippetsOutlined, WarningOutlined, CheckSquareOutlined, BarChartOutlined, UserOutlined, ExclamationCircleOutlined
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Button } from 'antd';
+import { Breadcrumb, Layout, Menu, Button } from 'antd';
 import { Outlet, Link } from 'react-router-dom';
 import { Footer } from 'antd/es/layout/layout';
-import logo from '../images/logo.svg'
+import logo from '../images/logo.svg';
+import { ConfigProvider, theme, Card } from "antd";
+import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { Switch, Space } from 'antd';
 
 
 
@@ -17,7 +20,7 @@ const items = [
     key: 'sub1',
     icon: React.createElement(AppstoreOutlined),
     label: 'All Stock',
-    to: 'allStock'
+    to: ''
   },
   {
     key: 'sub2',
@@ -131,84 +134,100 @@ const renderMenuItems = (menuItems) => {
 
 
 const DashboardLayout = () => {
+  const { defaultAlgorithm, darkAlgorithm } = theme;
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+
+  const handleTheme = () => {
+    setIsDarkMode((previousValue) => !previousValue);
+
+  };
+
 
   return (
-    <Layout>
-      {/* Sidebar */}
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-
-        <div className="demo-logo-vertical" style={{ height: '65px', backgroundColor: 'white' }}> <img src={logo} alt="logo" style={{ width: '100%', height: '100%' }} /> </div>
-
-        <Menu
-          mode="inline"
-          defaultSelectedKeys={['sub1']}
-          defaultOpenKeys={['sub1']}
-          style={{
-            height: '100%',
-            borderRight: 0,
-          }}
-          theme='dark'
-        >
-          {renderMenuItems(items)}
-        </Menu>
-      </Sider>
+    <ConfigProvider theme={{
+      algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+    }}>
       <Layout>
-        {/* Top Header */}
-        <Header
-          style={{
-            padding: '0',
-            background: colorBgContainer
-          }}
-        >
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
+        {/* Sidebar */}
+        <Sider trigger={null} collapsible collapsed={collapsed}>
+
+          <div className="demo-logo-vertical" style={{ height: '65px' , background: isDarkMode? 'black ' :'white' }}> <img src={logo} alt="logo" style={{ width: '100%', height: '100%' }} /> </div>
+
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['sub1']}
+            defaultOpenKeys={['sub1']}
             style={{
-              width: 64,
-              height: '100%',
+              borderRight: 0,
             }}
-          />
-          {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
-        </Header>
+            theme='dark'
+          >
+            {renderMenuItems(items)}
+          </Menu>
+        </Sider>
+        <Layout>
+          {/* Top Header */}
+          <Header
+            style={{
+              position:'relative',
+              padding: '0',
+              background: isDarkMode? 'black ' :'white'
+            }}
+          >
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                width: 64,
+                height: '100%',
+              }}
+            />
+            {/*THEME SWITCH BUTTON*/}
+            {/* <Space direction="vertical" style={{position:'absolute', right:'3%'}}>
+              <Switch onClick={handleTheme}
+                checkedChildren={<CheckOutlined />}
+                unCheckedChildren={<CloseOutlined />}
+                defaultChecked
+              />
+            </Space> */}
+            {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} /> */}
+          </Header>
 
-        <Breadcrumb
-          style={{
-            margin: '16px',
-          }}
-        >
+          <Breadcrumb
+            style={{
+              margin: '16px',
+            }}
+          >
 
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
 
-        <Content
-          style={{
-            padding: 24,
-            margin: '0px 16px',
-            minHeight: '64.8vh',
-            background: colorBgContainer,
-          }}
-        >
+          <Content
+            style={{
+              padding: 24,
+              margin: '0px 16px',
+              minHeight: '73.9vh',
+            }}
+          >
 
-          {/* Pages Section */}
-          <Outlet />
-        </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Envicta ©2023
-        </Footer>
+            {/* Pages Section */}
+            <Outlet />
+          </Content>
+          <Footer
+            style={{
+              textAlign: 'center',
+            }}
+          >
+            Envicta ©2023
+          </Footer>
+        </Layout>
       </Layout>
-    </Layout>
+    </ConfigProvider>
   );
 };
 

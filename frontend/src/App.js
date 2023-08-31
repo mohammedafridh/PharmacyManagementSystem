@@ -20,6 +20,7 @@ import PreLoader from './components/Preloader'
 import NotFound from './Pages/ErrorPages/NotFound'
 
 
+
 const App = () => {
 
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +41,7 @@ const App = () => {
       <Route path='*' element={<NotFound />} />
       <Route path='login' element={<Login />} />
       <Route path='/' element={<DashboardLayout/>}>
-        <Route path='allStock' index element={<AllStock />} />
+        <Route path='' index element={<AllStock />} />
         <Route path='addStock' element={<AddStock />} />
         <Route path='purchaseOrder' element={<CreatePurchaseOrder />} />
         <Route path='purchaseReturn' element={<PurchaseReturns />} />

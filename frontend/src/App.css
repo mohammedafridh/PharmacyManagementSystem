@@ -3,6 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+*:focus{
+  outline: none !important;
+}
 .ant-menu-item:hover, .ant-menu-submenu:hover{
   background-color: rgb(91, 91, 91) !important;
   color: white;
